@@ -1,0 +1,22 @@
+ <div class="panel-heading">所有日志</div>
+ 	<table class="table table-condensed table-hover">
+ 		<thead>
+ 			<tr>
+ 				<th>User</th>
+				<th>Date</th>
+				<th>Type</th>
+				<th>Remark</th>
+ 			</tr>
+ 		</thead>
+ 		<tbody>
+ 			#foreach ($row in $activityList)
+ 				<tr>
+ 					<td>${row.username}</td>
+ 					<td>${row.datetime}</td>
+ 					<td>${row.type}</td>
+ 					<td>${row.description}</td>
+ 				</tr>
+ 			#end
+ 		</tbody>
+ 	</table>
+ </div>

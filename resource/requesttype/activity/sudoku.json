@@ -1,0 +1,8 @@
+{
+	"requestBeanType" : "com.turtle.activity.beans.SudokuActivityRequest",
+	"handlers" : [
+		"AddSudokuActivityHandler"
+	],
+	"response" : "vm/activity/sudoku/add.vm",
+	"error" : "vm/error.vm"
+}

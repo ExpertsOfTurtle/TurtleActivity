@@ -6,6 +6,7 @@
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="datetime" jdbcType="VARCHAR" property="datetime" />
     <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.turtle.activity.entity.Activity">
     <result column="result" jdbcType="LONGVARCHAR" property="result" />
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    idactivity, username, datetime, type
+    idactivity, username, datetime, type, description
   </sql>
   <sql id="Blob_Column_List">
     result
@@ -124,11 +125,14 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.turtle.activity.entity.Activity">
+  <insert id="insert" parameterType="com.turtle.activity.entity.Activity"
+  useGeneratedKeys="true" keyProperty="idactivity">
     insert into activity (idactivity, username, datetime, 
-      type, result)
+      type, description, result
+      )
     values (#{idactivity,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{datetime,jdbcType=VARCHAR}, 
-      #{type,jdbcType=VARCHAR}, #{result,jdbcType=LONGVARCHAR})
+      #{type,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{result,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.turtle.activity.entity.Activity">
     insert into activity
@@ -144,6 +148,9 @@
       </if>
       <if test="type != null">
         type,
+      </if>
+      <if test="description != null">
+        description,
       </if>
       <if test="result != null">
         result,
@@ -161,6 +168,9 @@
       </if>
       <if test="type != null">
         #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
       </if>
       <if test="result != null">
         #{result,jdbcType=LONGVARCHAR},
@@ -188,6 +198,9 @@
       <if test="record.type != null">
         type = #{record.type,jdbcType=VARCHAR},
       </if>
+      <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
       <if test="record.result != null">
         result = #{record.result,jdbcType=LONGVARCHAR},
       </if>
@@ -202,6 +215,7 @@
       username = #{record.username,jdbcType=VARCHAR},
       datetime = #{record.datetime,jdbcType=VARCHAR},
       type = #{record.type,jdbcType=VARCHAR},
+      description = #{record.description,jdbcType=VARCHAR},
       result = #{record.result,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -212,7 +226,8 @@
     set idactivity = #{record.idactivity,jdbcType=INTEGER},
       username = #{record.username,jdbcType=VARCHAR},
       datetime = #{record.datetime,jdbcType=VARCHAR},
-      type = #{record.type,jdbcType=VARCHAR}
+      type = #{record.type,jdbcType=VARCHAR},
+      description = #{record.description,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -229,6 +244,9 @@
       <if test="type != null">
         type = #{type,jdbcType=VARCHAR},
       </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
       <if test="result != null">
         result = #{result,jdbcType=LONGVARCHAR},
       </if>
@@ -240,6 +258,7 @@
     set username = #{username,jdbcType=VARCHAR},
       datetime = #{datetime,jdbcType=VARCHAR},
       type = #{type,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
       result = #{result,jdbcType=LONGVARCHAR}
     where idactivity = #{idactivity,jdbcType=INTEGER}
   </update>
@@ -247,7 +266,8 @@
     update activity
     set username = #{username,jdbcType=VARCHAR},
       datetime = #{datetime,jdbcType=VARCHAR},
-      type = #{type,jdbcType=VARCHAR}
+      type = #{type,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR}
     where idactivity = #{idactivity,jdbcType=INTEGER}
   </update>
 </mapper>

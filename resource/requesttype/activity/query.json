@@ -1,0 +1,8 @@
+{
+	"requestBeanType" : "com.turtle.activity.beans.QueryActivityRequest",
+	"handlers" : [
+		"QueryActivityHandler"
+	],
+	"response" : "vm/activity/normal/query.vm",
+	"error" : "vm/error.vm"
+}

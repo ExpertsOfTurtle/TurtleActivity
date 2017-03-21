@@ -1,0 +1,69 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="boostrap/css/bootstrap.min.css"></link>
+<!-- jQuery library -->
+<script src="boostrap/js/jquery-2.2.0.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="boostrap/js/bootstrap.min.js"></script>
+
+<link type="text/css"
+	href="boostrap/css/custom-theme/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+<!--<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">-->
+<link type="text/css" href="boostrap/assets/css/font-awesome.min.css"
+	rel="stylesheet" />
+
+<link type="text/css" href="common.css" rel="stylesheet" />
+<script src="activity.js"></script>
+<!--[if IE 7]>
+            <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css">
+            <![endif]-->
+<!--[if lt IE 9]>
+            <link rel="stylesheet" type="text/css" href="css/custom-theme/jquery.ui.1.10.0.ie.css"/>
+            <![endif]-->
+<!--
+		<script src="../assets/js/docs.js" type="text/javascript"></script>
+		<script src="../assets/js/demo.js" type="text/javascript"></script>
+		-->
+
+<!-- for date-picker
+		-->
+
+</head>
+
+<body>
+	<div style="padding-left: 40px">
+		<div id="groupMsgBox">
+			<div class="alert alert-danger" style="display:none">
+			    <a href="#" class="close" data-dismiss="alert">
+			        &times;
+			    </a>
+			    <strong>失败</strong><div class="content"></div>
+			</div>
+			<div class="alert alert-success" style="display:none">
+			    <a href="#" class="close" data-dismiss="alert">
+			        &times;
+			    </a>
+			    <strong>成功</strong><div class="content"></div>
+			</div>
+		</div>
+		<div class="panel panel-primary"
+			style="max-width: 1000px; width: auto; ">
+			<div class="panel-heading">分类</div>
+			<div class="panel-body">
+				<div id="activityList"></div>
+			</div>
+		</div>
+		
+	</div>
+
+</body>
+
+	<script>
+		window.onload = function() {
+			
+			queryGroup();
+		}
+		
+	</script>
+</html>
