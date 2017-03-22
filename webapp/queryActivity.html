@@ -8,7 +8,8 @@
 <script src="boostrap/js/bootstrap.min.js"></script>
 
 <link type="text/css"
-	href="boostrap/css/custom-theme/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+	href="boostrap/css/custom-theme/jquery-ui-1.10.0.custom.css"
+	rel="stylesheet" />
 <!--<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">-->
 <link type="text/css" href="boostrap/assets/css/font-awesome.min.css"
 	rel="stylesheet" />
@@ -34,32 +35,89 @@
 <body>
 	<div style="padding-left: 40px">
 		<div id="groupMsgBox">
-			<div class="alert alert-danger" style="display:none">
-			    <a href="#" class="close" data-dismiss="alert">
-			        &times;
-			    </a>
-			    <strong>失败</strong><div class="content"></div>
+			<div class="alert alert-danger" style="display: none">
+				<a href="#" class="close" data-dismiss="alert"> &times; </a> <strong>失败</strong>
+				<div class="content"></div>
 			</div>
-			<div class="alert alert-success" style="display:none">
-			    <a href="#" class="close" data-dismiss="alert">
-			        &times;
-			    </a>
-			    <strong>成功</strong><div class="content"></div>
+			<div class="alert alert-success" style="display: none">
+				<a href="#" class="close" data-dismiss="alert"> &times; </a> <strong>成功</strong>
+				<div class="content"></div>
 			</div>
 		</div>
 		<div class="panel panel-primary"
-			style="max-width: 1000px; width: auto; ">
+			style="max-width: 1000px; width: auto;">
+			<div class="panel-heading">分类</div>
+			<div class="panel-body">
+				<div id="insertDiv">
+					<div class="form-group" style="width:40%;">
+						<label for="name">WHO</label>
+						<select class="form-control" id="username">
+							<option value="Worldfinal">Worldfinal</option>
+							<option value="test">test</option>
+						</select>
+					</div>
+					<div class="form-group" style="width:40%;">
+						<label for="name">WHAT</label>
+						<select class="form-control" id="activityType"
+						onchange="changeActivityType();">
+							<option value="SUDOKU">Sudoku</option>
+							<option value="CF">Codeforces</option>
+						</select>
+					</div>
+					<div id="appInput">
+						<div class="form-group" style="width:40%;" id="sudokuType">
+							<label for="name">TYPE</label> <select class="form-control">
+								<option value="入门">入门</option>
+								<option value="初级">初级</option>
+								<option value="中级">中级</option>
+								<option value="高级">高级</option>
+								<option value="骨灰">骨灰</option>
+							</select>
+						</div>
+						<div>
+							<label>TIME</label>
+						</div>
+						<div class="form-group" id="time_hour" 
+						style="float:left;width:10%;">
+							<label for="name">时</label>
+							<input type="number"
+								class="form-control" id="hour" placeholder="时" value="0">
+						</div>
+						<div class="form-group" id="time_minute" 
+						style="float:left;width:10%;padding-left:10px;">
+							<label for="name">分</label>
+							<input type="number"
+								class="form-control" id="minute" placeholder="分">
+						</div>
+						<div class="form-group" id="time_second" 
+						style="float:left;width:10%;padding-left:10px;">
+							<label for="name">秒</label>
+							<input type="number"
+								class="form-control" id="second" placeholder="秒">
+						</div>
+						
+						
+					</div>
+					<div class="form-group" style="float:left;width:100%;">
+						<button class="btn btn-primary" onclick="insertSudokuActivity();">OK</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-primary"
+			style="max-width: 1000px; width: auto;">
 			<div class="panel-heading">分类</div>
 			<div class="panel-body">
 				<div id="activityList"></div>
 			</div>
 		</div>
-		
+
 	</div>
 
 </body>
 
-	<script>
+<script>
 		window.onload = function() {
 			
 			queryGroup();

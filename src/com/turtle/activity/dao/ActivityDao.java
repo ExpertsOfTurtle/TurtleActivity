@@ -81,6 +81,7 @@ public class ActivityDao {
 		if (!StringUtil.isEmpty(fromDate) && !StringUtil.isEmpty(toDate)) {
 			criteria.andDatetimeBetween(fromDate, toDate);
 		}
+		example.setOrderByClause("idactivity desc");
 		list = mapper.selectByExample(example);
 		
 		logger.debug("queryActivity. RowCount={}", list.size());
