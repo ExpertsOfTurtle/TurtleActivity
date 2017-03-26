@@ -1,0 +1,7 @@
+{
+	"requestBeanType" : "com.frc.appleframework.beans.AppleRequest",
+	"handlers" : [
+		"AddSudokuActivityTimerHandler"
+	],
+	"error" : "vm/error.vm"
+}

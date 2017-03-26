@@ -29,7 +29,7 @@ public class AddSudokuActivityHandler extends AbstractHandler {
 		String username = req.getUsername();
 		String type = req.getType();
 		int second = req.getSecond();
-		JSONObject param = sudokuActivityService.createParam(type, second);
+		JSONObject param = sudokuActivityService.createParam(type, second, "");
 		int rt = sudokuActivityService.addActivity(username, param);
 		
 		putRequestData("result", rt);

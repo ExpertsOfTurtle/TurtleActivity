@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.frc.appleframework.exception.AppleException;
+import com.frc.appleframework.util.StringUtil;
 import com.turtle.activity.common.ActivityType;
 import com.turtle.activity.common.IErrorCode;
 import com.turtle.activity.entity.Activity;
@@ -33,6 +34,32 @@ public class SudokuActivityService extends AbstractActivityService {
 	@Override
 	public int addActivity(String username, JSONObject param) throws AppleException {
 		String type = ActivityType.SUDOKU.name();
+		/*
+		String id = param.getString("id");
+		if (!StringUtil.isEmpty(id)) {
+			List<Activity> list = activityDao.queryActivities(username, type, "", "");
+			boolean flag = false;
+			for (Activity act : list) {
+				String result = act.getResult();
+				if(StringUtil.isEmpty(result)) {
+					continue;
+				}
+				JSONObject obj = JSONObject.fromObject(result);
+				if (obj == null) {
+					continue;
+				}
+				Object objId = obj.get("id");
+				if (objId != null && id.equals(objId)) {
+					flag = true;
+					break;
+				}
+			}
+			if (flag) {
+				logger.info("曾经插入过了 id={}", id);
+				return 0;
+			}
+		}*/
+		
 		int rt = this.activityDao.addActivity(username, type, param.toString(), getDescription(username, param));
 		return rt;
 	}
@@ -46,10 +73,13 @@ public class SudokuActivityService extends AbstractActivityService {
 		return str;
 	}
 	
-	public JSONObject createParam(String type, int second) throws AppleException {
+	public JSONObject createParam(String type, int second, String id) throws AppleException {
 		JSONObject json = new JSONObject();
 		json.put("type", type);
 		json.put("result", second);
+		if (!StringUtil.isEmpty(id)) {
+			json.put("id", id);
+		}
 		return json;
 	}
 	

@@ -70,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    idactivity, username, datetime, type, description
+    idactivity, username, datetime, type, result, description
   </sql>
   <sql id="Blob_Column_List">
     result
