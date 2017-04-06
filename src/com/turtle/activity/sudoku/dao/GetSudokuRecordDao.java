@@ -108,6 +108,10 @@ public class GetSudokuRecordDao {
 			Elements es = doc.select(".feed_title");
 			for (int i = 0; i < es.size(); i++) {
 				Element e = es.get(i);		
+				String txt = e.html();
+				if (!txt.contains("PK")) {//只统计PK的，每日数独不计算在内
+					continue;
+				}
 				List<Node> list = e.childNodes();
 				SudokuRecord record = new SudokuRecord();
 				for (Node node : list) {
