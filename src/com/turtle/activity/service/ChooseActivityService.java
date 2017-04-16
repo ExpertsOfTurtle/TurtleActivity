@@ -1,5 +1,6 @@
 package com.turtle.activity.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -33,6 +34,19 @@ public class ChooseActivityService extends AbstractActivityService {
 		String type = ActivityType.CHOOSE.name();
 		int rt = this.activityDao.addActivity(username, type, param.toString(), getDescription(username, param));
 		return rt;
+	}
+	public List<Activity> queryActivity(String username, String date, int groupid ) throws AppleException {
+		String type = ActivityType.CHOOSE.name();
+		List<Activity> rt = this.activityDao.queryActivities(username, type, date, date);
+		List<Activity> res=new ArrayList<Activity>();
+		for(int i=0;i<rt.size();i++){
+			String tmpres=rt.get(i).getResult();
+			JSONObject json=JSONObject.fromObject(tmpres);
+			if(groupid==json.getInt("id")){
+				res.add(rt.get(i));
+			}
+		}
+		return res;
 	}
 	
 	protected String getDescription(String username, JSONObject param) {

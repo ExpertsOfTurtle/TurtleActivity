@@ -41,7 +41,7 @@ public class ActivityDao {
 		activity.setType(type);
 		activity.setResult(result);
 		activity.setDescription(description);
-		activity.setDatetime(DateUtil.getDateTime());
+		activity.setDatetime(DateUtil.getDateTime("yyyyMMdd"));
 		
 		mapper.insert(activity);
 		
@@ -87,6 +87,7 @@ public class ActivityDao {
 		logger.debug("queryActivity. RowCount={}", list.size());
 		return list;
 	}
+	
 	private boolean validateDate(String fromDate, String toDate) {
 		Date d1 = DateUtil.parse(fromDate);
 		Date d2 = DateUtil.parse(toDate);
