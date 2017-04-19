@@ -35,9 +35,9 @@ public class ChooseActivityService extends AbstractActivityService {
 		int rt = this.activityDao.addActivity(username, type, param.toString(), getDescription(username, param));
 		return rt;
 	}
-	public List<Activity> queryActivity(String username, String date, int groupid ) throws AppleException {
+	public List<Activity> queryActivity(String username, String sdate,String edate, int groupid ) throws AppleException {
 		String type = ActivityType.CHOOSE.name();
-		List<Activity> rt = this.activityDao.queryActivities(username, type, date, date);
+		List<Activity> rt = this.activityDao.queryActivities(username, type, sdate, edate);
 		List<Activity> res=new ArrayList<Activity>();
 		for(int i=0;i<rt.size();i++){
 			String tmpres=rt.get(i).getResult();
